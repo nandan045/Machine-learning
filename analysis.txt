@@ -1,0 +1,68 @@
+
+= > Machine learning algorithm
+
+The machine learning algorithms are divided into two wide categories:
+Supervised learning: The value you want to predict is already present in the dataset, i.e. the data is labelled.
+•	Classification: A subcategory of SL, Classification is the process of predicting categorical/discrete responses i.e. the input data is classified into categories. Another application is anomaly detection i.e. the identification of outliers/unusual objects that do not appear in a normal distribution.
+•	Regression: Another subcategory of SL, Regression is the process of predicting continuous responses (i.e. numeric values) which normally answer questions like ‘How many’/ ‘How much’.
+Unsupervised learning: The value you want to predict is not present in the dataset, i.e. the data is not labelled.
+•	Clustering: A subcategory of UL, Clustering is the process used for exploratory data analysis to find hidden patterns or groupings/partitions of data.
+ 
+So, the algorithm suitable for our use are classification algorithms. The classification algorithms are:
+1.     Linear classifiers: Logistic Regression, Naïve Bayes classifier.
+2.     Nearest Neighbour.
+3.     Support vector machines.
+4.     Decision trees.
+5.     Boosted trees.
+6.     Random Forest.
+7.     Neural Networks.
+For this paper we have applied Logistic Regression, Naïve Bayes classifier, K-Nearest neighbour, Support vector machines, Decision trees and random forest algorithms.
+ 
+6.  	Experimental analysis
+The following are the parameters by which we are going to measure the quality of the machine learning algorithm.
+1.     Accuracy score
+2.     Precision score
+3.     Recall score
+4.     F1 score
+5.     Confusion matrix
+ 
+After analysing following are the predicting scores of the algorithms:
+
+ML algorithm	Accuracy score	Precision score	Recall score	F1 score
+Simple KNN	96.726%	96.733%	96.726%	96.729%
+SVM	96.48%	96.61%	96.49%	96.44%
+Random Forest	98.19%	98.19%	98.19%	98.19%
+Naïve Bayes	61.7%	79.861%	61.76%	61.56%
+Decision Tree	97.2%	97.2%	97.2%	97.21%
+Logistic Regression	96.205%	96.254%	96.204%	96.167%
+
+Table 1. Predictive scores of machine learning algorithms
+  
+  
+For the experiment we have used dataset with 499 malware files and 10099 legitimate files. The number of features extracted for this experiment is 56. The 56 features are extracted from the pefile. Using these features the machine learning model is trained which is later used for prediction. The machine learning algorithms used are Simple KNN, SVM, Random forest, Naïve Bayes, Decision tree, Logistic regression.
+The dataset is cleaned subsequently after the extraction. The dataset is scaled and it is split into test and train datasets. Now the machine learning model is created using the algorithm and it is sent to testing phase to evaluate the quality of the machine learning algorithm.
+After the analysis, from the table 1. We can say that the Random forest algorithm is the best choice for the malware detection. Each of the machine learning algorithm takes 4-5 seconds to generate output.
+
+=> Improvement in machine learning model 
+
+To improve the machine learning model, we have reduced the number of features by writing a script which selects only 9 important features from 56 features, which reduces the speed of prediction from 4-5 seconds to 1-2 seconds.
+In the scripts, we consider only those columns which vary more among the dataset. The data which is most similar are removed from the dataset. Thus, the prediction is only based on the features which vary with each of the files, which helps in much more better analysis of the dataset.
+The redundant values should be cleaned properly. The dataset should be scaled, so that none of the features important is neglected. To visualise the features in the dataset, we have used WEKA software and matplotlib python module in the jupyter notebook.
+After the feature selection we can see rapid growth in the scores in Naïve Bayes algorithm (see Table 1 and 2). We can see that all the algorithms have score above 95.588% after the feature selection phase. Previously the machine learning algorithms we comparatively slow and the scores even though the highest for Random Forest compared to that of it’s in the table after features selection, the rest of the algorithms had comparatively less scores before.
+Following table gives the scores of the machine learning algorithms after the feature selection:
+
+ML algorithm	Accuracy score	Precision score	Recall score	F1 score
+Simple KNN	97.296%	97.295%	97.296%	97.295%
+SVM	96.596%	96.442%	96.442%	96.389%
+Random Forest	97.770%	97.770%	97.770%	97.76%
+Naïve Bayes	95.588%	95.627%	95.588%	95.542%
+Decision Tree	97.438%	97.435%	97.438%	97.436%
+Logistic Regression	95.777%	95.835%	95.777%	95.730%
+
+Table 2. Predictive scores of machine learning algorithms after feature selection
+ 
+
+For the experiment we have downloaded some of the malware files and clean files from the internet and some from the computers and pen drives. We create the GUI of the software using tkinter python module. The experiment is conducted in Linux operating system (Linux mint). We have used the latest version of python, i.e. python 3.6. Some of the python modules used in the experiment are sklearn, numpy, matplotlib, tensorflow, pandas etc. We used MySQL for database. The database was used to store the dataset.
+The collected malware files and clean files we kept in separate directories. The features we extracted from the directory containing malwares files and the directory containing clean files, then they are inserted into the database with the class label depicting whether the file is clean or not. The dataset is split into test dataset and train dataset. Then the machine learning model is created using the train dataset. To check the accuracy rate of the model, we apply the machine learning model on the test dataset.
+ 
+In this paper we use machine learning techniques to predict and detect malwares. Initially we had conducted the experiment on 6 machine learning algorithms Logistic Regression, Naïve Bayes classifier, K-Nearest neighbour, Support vector machines, Decision trees and random forest algorithms, we tried to improve the prediction score of the machine learning model by adding another phase in the machine learning pipeline, i.e. feature selection. After that we have got improved predictive scores and the speed of the machine learning model predicting whether the file is malicious or legitimate is reduced. Generally the machine learning algorithm is applied on the dataset and a machine learning model is created and using sklearn, we can import metrics modules which are helpful in analysing the model. Instead of using just single machine learning model, we can create several machine learning models using different machine learning algorithms. This reduces the false positive rates and improve the prediction accuracy of the overall software. In this paper we have done static analysis which means the input file is predicted whether it is malicious or not without executing it. There is another way of prediction called dynamic analysis which involves examining the behaviour of the executable by running it. Both type of analysis have their advantages and disadvantages and they complement each other. Static analysis is faster but, if malware is successfully concealed using code obfuscation techniques, it could evade detection. Contrarily, code obfuscation techniques and polymorphic malware analysis the runtime execution of a program.
